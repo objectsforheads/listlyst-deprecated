@@ -24,3 +24,5 @@ kadira:flow-router
 check
 random
 http
+accounts-ui
+accounts-password
