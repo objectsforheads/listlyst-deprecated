@@ -1,0 +1,15 @@
+<template name="userAPIKeyMain">
+  <h2>Your API Key</h2>
+  <div class="form-group">
+    <div class="input-group">
+      <input id="currentKey" class="form-control" type="text" value="{{userKey}}" readonly>
+      <div class="input-group-addon">
+        <button class="btn-link clipboardJS-trigger" data-clipboard-target="#currentKey">
+          <span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
+          <span class="sr-only">(copy API key)</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <p>Need to scrub your old API key? <button class="btn-link regenerate-key">Regenerate your key</button> to destroy all evidence of the old one.</p>
+</template>
