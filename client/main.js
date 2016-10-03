@@ -1,2 +1,2 @@
-import '/imports/startup/client';
 import '/imports/startup/shared';
+import '/imports/startup/client';

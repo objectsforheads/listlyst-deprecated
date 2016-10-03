@@ -1,1 +1,1 @@
-APIKeys = new Meteor.Collection( 'apikeys' );
+import './collections.js';
