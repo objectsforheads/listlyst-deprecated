@@ -4,6 +4,6 @@ import { BlazeLayout } from 'meteor/kadira:blaze-layout';
 FlowRouter.route( '/', {
   name: 'controlCenter',
   action: function() {
-    BlazeLayout.render( 'mainLayout', { main: 'controlCenter' } ); 
+    BlazeLayout.render( 'mainLayout', { main: 'controlCenter' } );
   }
 });

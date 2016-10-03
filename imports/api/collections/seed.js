@@ -411,7 +411,7 @@ var cards = [
     "description":"Whenever you cast a spell, this minion gains +1/+1.",
     "manaCost":2,
     "type":"Unit",
-    "race":"ARCANYST",
+    "race":"Arcanyst",
     "attack":1,
     "health":2,
     "card":"cards/songhai/CharkriAvatar.png"
@@ -424,7 +424,7 @@ var cards = [
     "description":"Whenever you cast a spell, deal 1 damage to enemy General and restore 1 Health to your General.",
     "manaCost":4,
     "type":"Unit",
-    "race":"ARCANYST",
+    "race":"Arcanyst",
     "attack":4,
     "health":4,
     "card":"cards/songhai/FourWindsMagi.png"
@@ -2257,7 +2257,7 @@ var cards = [
     "description":"",
     "manaCost":5,
     "type":"Unit",
-    "race":"GOLEM",
+    "race":"Golem",
     "attack":4,
     "health":9,
     "card":"cards/neutral/Brightmoss.png"
@@ -2270,7 +2270,7 @@ var cards = [
     "description":"",
     "manaCost":3,
     "type":"Unit",
-    "race":"GOLEM",
+    "race":"Golem",
     "attack":4,
     "health":3,
     "card":"cards/neutral/BloodshardGolem.png"
@@ -2283,7 +2283,7 @@ var cards = [
     "description":"",
     "manaCost":7,
     "type":"Unit",
-    "race":"GOLEM",
+    "race":"Golem",
     "attack":10,
     "health":10,
     "card":"cards/neutral/DragonboneGolem.png"
@@ -2296,7 +2296,7 @@ var cards = [
     "description":"",
     "manaCost":6,
     "type":"Unit",
-    "race":"GOLEM",
+    "race":"Golem",
     "attack":8,
     "health":8,
     "card":"cards/neutral/StormmetalGolem.png"
@@ -2309,7 +2309,7 @@ var cards = [
     "description":"Whenever this minion deals damage, restore 2 Health to your General.",
     "manaCost":3,
     "type":"Unit",
-    "race":"ARCANYST",
+    "race":"Arcanyst",
     "attack":2,
     "health":4,
     "card":"cards/neutral/SunSeer.png"
@@ -2322,7 +2322,7 @@ var cards = [
     "description":"The first non-Bloodborn spell you cast each turn costs 1 less.",
     "manaCost":2,
     "type":"Unit",
-    "race":"ARCANYST",
+    "race":"Arcanyst",
     "attack":1,
     "health":3,
     "card":"cards/neutral/Manaforger.png"
@@ -2335,7 +2335,7 @@ var cards = [
     "description":"Whenever you cast a spell, summon a 2/1 Illusion on a random nearby space.",
     "manaCost":3,
     "type":"Unit",
-    "race":"ARCANYST",
+    "race":"Arcanyst",
     "attack":2,
     "health":3,
     "card":"cards/neutral/PrismaticIllusionist.png"
@@ -2348,7 +2348,7 @@ var cards = [
     "description":"Opening Gambit: Put a copy of the most recently cast spell into your action bar.",
     "manaCost":3,
     "type":"Unit",
-    "race":"ARCANYST",
+    "race":"Arcanyst",
     "attack":3,
     "health":1,
     "card":"cards/neutral/AlcuinLoremaster.png"
@@ -2361,7 +2361,7 @@ var cards = [
     "description":"Whenever you cast a spell, your Arcanyst minions gain +2 Health.",
     "manaCost":4,
     "type":"Unit",
-    "race":"ARCANYST",
+    "race":"Arcanyst",
     "attack":4,
     "health":4,
     "card":"cards/neutral/OwlbeastSage.png"
@@ -2374,7 +2374,7 @@ var cards = [
     "description":"Opening Gambit: Dispel ALL spaces around it.",
     "manaCost":4,
     "type":"Unit",
-    "race":"ARCANYST",
+    "race":"Arcanyst",
     "attack":3,
     "health":3,
     "card":"cards/neutral/Lightbender.png"
@@ -2400,7 +2400,7 @@ var cards = [
     "description":"",
     "manaCost":1,
     "type":"Unit",
-    "race":"ARCANYST",
+    "race":"Arcanyst",
     "attack":2,
     "health":1,
     "card":"cards/neutral/Illusion.png"
@@ -2673,7 +2673,7 @@ var cards = [
     "description":"The first Golem you summon each turn costs 1 less.",
     "manaCost":2,
     "type":"Unit",
-    "race":"GOLEM",
+    "race":"Golem",
     "attack":2,
     "health":3,
     "card":"cards/neutral/GolemMetallurgist.png"
@@ -2686,7 +2686,7 @@ var cards = [
     "description":"Provoke\nYour other Golem minions have Provoke.",
     "manaCost":3,
     "type":"Unit",
-    "race":"GOLEM",
+    "race":"Golem",
     "attack":2,
     "health":4,
     "card":"cards/neutral/GolemVanquisher.png"
@@ -2725,7 +2725,7 @@ var cards = [
     "description":"Your opponent's non-Bloodborn spells cost 1 more to cast.",
     "manaCost":6,
     "type":"Unit",
-    "race":"ARCANYST",
+    "race":"Arcanyst",
     "attack":7,
     "health":7,
     "card":"cards/neutral/ArchonSpellbinder.png"
@@ -2790,7 +2790,7 @@ var cards = [
     "description":"",
     "manaCost":2,
     "type":"Unit",
-    "race":"GOLEM",
+    "race":"Golem",
     "attack":3,
     "health":2,
     "card":"cards/neutral/SkyrockGolem.png"
@@ -2998,7 +2998,7 @@ var cards = [
     "description":"Opening Gambit: Gain a copy of a random spell from your opponent's action bar.",
     "manaCost":4,
     "type":"Unit",
-    "race":"ARCANYST",
+    "race":"Arcanyst",
     "attack":4,
     "health":3,
     "card":"cards/neutral/Mindwarper.png"
@@ -3167,7 +3167,7 @@ var cards = [
     "description":"",
     "manaCost":4,
     "type":"Unit",
-    "race":"GOLEM",
+    "race":"Golem",
     "attack":4,
     "health":6,
     "card":"cards/neutral/HailstoneGolem.png"
@@ -3271,7 +3271,7 @@ var cards = [
     "description":"Whenever this minion takes damage, it deals that much damage to the enemy General.",
     "manaCost":6,
     "type":"Unit",
-    "race":"ARCANYST",
+    "race":"Arcanyst",
     "attack":3,
     "health":7,
     "card":"cards/neutral/Eclipse.png"
@@ -3297,7 +3297,7 @@ var cards = [
     "description":"At the start of your turn, restore this minion to full Health and switch its Attack and Health.",
     "manaCost":4,
     "type":"Unit",
-    "race":"ARCANYST",
+    "race":"Arcanyst",
     "attack":3,
     "health":5,
     "card":"cards/neutral/Moebius.png"
@@ -3362,7 +3362,7 @@ var cards = [
     "description":"You may replace an additional card each turn.",
     "manaCost":2,
     "type":"Unit",
-    "race":"ARCANYST",
+    "race":"Arcanyst",
     "attack":1,
     "health":3,
     "card":"cards/neutral/Aethermaster.png"
@@ -3557,7 +3557,7 @@ var cards = [
     "description":"Whenever you cast a spell, summon a 1/1 Spellspark with Rush on a random nearby space.",
     "manaCost":5,
     "type":"Unit",
-    "race":"ARCANYST",
+    "race":"Arcanyst",
     "attack":3,
     "health":5,
     "card":"cards/neutral/Firestarter.png"
@@ -3895,7 +3895,7 @@ var cards = [
     "description":"",
     "manaCost":6,
     "type":"Unit",
-    "race":"GOLEM",
+    "race":"Golem",
     "attack":4,
     "health":11,
     "card":"cards/neutral/DiamondGolem.png"
@@ -3921,7 +3921,7 @@ var cards = [
     "description":"Opening Gambit: Lower the cost of all spells in your action bar by 1.",
     "manaCost":3,
     "type":"Unit",
-    "race":"ARCANYST",
+    "race":"Arcanyst",
     "attack":3,
     "health":1,
     "card":"cards/neutral/Abjudicator.png"
@@ -4025,7 +4025,7 @@ var cards = [
     "description":"Whenever you cast a spell that targets a friendly minion, draw a card.",
     "manaCost":6,
     "type":"Unit",
-    "race":"ARCANYST",
+    "race":"Arcanyst",
     "attack":6,
     "health":6,
     "card":"cards/neutral/TheScientist.png"
