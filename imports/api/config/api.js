@@ -7,25 +7,20 @@ API = {
     var authorized = API.authenticator(apikey);
 
     // If they're authorized,
-    // go ahead and pass the request to API.controller and wait for a response
-    // then inform the user of API.controller's response
+    // go ahead and pass the request to API.operator and wait for a response
+    // then inform the user of API.operator's response
     if (authorized) {
       // API no longer needs api key, remove it from parameters
       delete parameters.query.apikey;
-      return API.controller(parameters, operation);
+
+      // pass parameters along to API.operator to fetch a response
+      return API.operator[operation](parameters);
     }
     // If they're not authorized,
     // stop here and return a denied message to API.relay
     else {
       return { error: 401, message: "Slow down there, friend! The clerical bots say your API key is invalid. They don't know why it's invalid, but their human managers suggest checking if the API key's been mistyped or scrubbed. If the problem persists, contact support to talk to a live human being for help." };
     }
-  },
-  // Route the API depending on the request performed
-  controller: function(parameters, operation) {
-    // API.relay has requested a response to the user's request -
-    // pass it along to API.operator to fetch a response for API.relay
-    return API.operator[operation](parameters);
-    // Send the response back to API.relay
   },
   // Make sure the user is authorized to access the API
   authenticator: function(apikey) {
@@ -38,7 +33,7 @@ API = {
     }
   },
   operator: {
-    // API.controller requests a response to the passed along parameters
+    // API.relay requests a response to the passed along parameters
     filter: function(parameters) {
       // Prep the filters object for collection of key:value pairs.
       var filters = {};
@@ -104,8 +99,5 @@ API = {
 
       return Meteor.call('filterCards', filters);
     }
-    // Grab the appropriate response
-
-    // Send it back to API.controller
   }
 }
