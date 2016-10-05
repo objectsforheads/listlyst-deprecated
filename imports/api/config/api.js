@@ -35,66 +35,60 @@ API = {
   operator: {
     // API.relay requests a response to the passed along parameters
     filter: function(parameters) {
-      // Prep the filters object for collection of key:value pairs.
-      var filters = {};
+      // Grab the query from the parameters object - it contains our filters
+      var filters = parameters.query;
 
-      for (var query in parameters) {
-        // Disclude any key-value pair that:
-        // 1. is a parameter, not a query
-        // 2. is empty
-        // 3. is the actual query-parameter portion of the request
-        if (query.includes('query') && parameters[query] != null && typeof parameters[query] === 'string') {
-          // Pull the key:value pairs from the URL.
-          key = parameters[query].toLowerCase();
-          value = parameters['parameter' + query.replace('query', '')].toLowerCase();
+      for (var key in filters) {
 
-          // The values for the URL differ than the filters used in the database
-          // therefore we need to adjust the user-input to the server's keywords
+        var value = filters[key].toLowerCase();
 
-          // User inputs faction as one word but faction is officially 2 words
-          if (key === 'faction') {
-            switch(value) {
-              case 'lyonar':
-                value = 'Lyonar Kingdoms';
-                break
-              case 'songhai':
-                value = 'Songhai Empire';
-                break
-              case 'abyssian':
-                value = 'Abyssian Host';
-                break
-              case 'magmar':
-                value = 'Magmar Aspects';
-                break
-              case 'vanar':
-                value = 'Vanar Kindred';
-                break
-              case 'neutral':
-                value = 'Neutral';
-                break
-            }
+        // The values for the URL differ than the filters used in the database
+        // therefore we need to adjust the user-input to match the server's keywords
+
+        // User inputs faction as one word but faction is officially 2 words
+        if (key === 'faction') {
+          switch(value) {
+            case 'lyonar':
+              value = 'Lyonar Kingdoms';
+              break
+            case 'songhai':
+              value = 'Songhai Empire';
+              break
+            case 'abyssian':
+              value = 'Abyssian Host';
+              break
+            case 'magmar':
+              value = 'Magmar Aspects';
+              break
+            case 'vanar':
+              value = 'Vanar Kindred';
+              break
+            case 'neutral':
+              value = 'Neutral';
+              break
           }
-
-          // user inputs a set shorthand so we'll expand it here
-          else if (key === 'set') {
-            switch(value) {
-              case 'base':
-                value = 'Base';
-                break
-              case 'dos':
-                value = 'Denizens of Shim\'Zar'
-                break
-            }
-          }
-
-          else {
-            // By default, capitalize the value
-            value = value.charAt(0).toUpperCase() + value.slice(1);
-          }
-
-          // Add the key-value pair to the filter object.
-          filters[key] = value;
         }
+
+        // User inputs a set shorthand so we'll expand it here
+        else if (key === 'set') {
+          switch(value) {
+            case 'base':
+              value = 'Base';
+              break
+            case 'dos':
+              value = 'Denizens of Shim\'Zar'
+              break
+          }
+        }
+
+        else {
+          // By default, capitalize the value
+          value = value.charAt(0).toUpperCase() + value.slice(1);
+        }
+
+        // Change the value before sending the request to the database
+        filters[key] = value;
+
       }
 
       return Meteor.call('filterCards', filters);
