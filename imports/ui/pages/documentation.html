@@ -1,0 +1,312 @@
+<template name="documentation">
+  <h1>Documentation</h1>
+
+  <h2>Introduction</h2>
+  <p>
+    Listlyst is an unofficial Duelyst API built around <a href="https://en.wikipedia.org/wiki/Representational_state_transfer" target="_blank">REST principles</a>. Per these guidelines, Listlyst will respond to requests to its endpoints with a status code, response header, and response body.
+  </p>
+
+  <h2>Authorization &amp; Security</h2>
+  <p>
+    Anytime you call Listlyst, you'll need to send your api key along with the request. This key is unique to your account and should only be seen by your eyes and the metaphorical eyes of benevolent server-side code. In the case that your api key is compromised, you can obtain a new one through the <a href="">account portal</a>. Doing so will delete and invalidate your old one, making it highly statistically improbable that you will ever retrieve it from the twisting nether.
+  </p>
+
+  <h2>Getting Started</h2>
+  <p>
+    You can call Listlyst through a URL that'll look something like:
+  </p>
+  <code class="block">
+    http://listlyst.com/api/v1/[endpoint]?[field]=[value]&amp;apikey=[yourKey]
+  </code>
+  <p>
+    <small>
+      Field-value pairs of the query string are optional.
+    </small>
+  </p>
+  <h2>Endpoints</h2>
+  <h3>All Cards</h3>
+  <p>Calling this endpoint will return a JSON of every card as of the latest patch. This can be filtered by a provided query string.</p>
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-addon">
+        GET
+      </div>
+      <input type="text" class="form-control" value="http://listlyst.com/api/v1/cards?faction=lyonar&apikey=">
+      <div class="input-group-addon">
+        <button class="btn-link clipboardJS-trigger" data-clipboard-target="#currentKey">
+          <span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
+          <span class="sr-only">(copy API endpoint)</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table">
+      <caption>Query String</caption>
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>Value</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>faction</td>
+          <td>
+            <select class="form-control">
+              <option value="">lyonar</option>
+              <option value="">songhai</option>
+              <option value="">abyssian</option>
+              <option value="">vetruvian</option>
+              <option value="">magmar</option>
+              <option value="">vanar</option>
+              <option value="">neutral</option>
+            </select>
+          </td>
+          <td>Only return cards belonging to the specified faction</td>
+        </tr>
+        <tr>
+          <td>rarity</td>
+          <td>
+            <select class="form-control">
+              <option value="">basic</option>
+              <option value="">common</option>
+              <option value="">rare</option>
+              <option value="">epic</option>
+              <option value="">legendary</option>
+            </select>
+          </td>
+          <td>Only return cards with the specified rarity</td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td>
+            <select class="form-control">
+              <option value="">unit</option>
+              <option value="">spell</option>
+              <option value="">artifact</option>
+            </select>
+          </td>
+          <td>Only return cards with the specified type</td>
+        </tr>
+        <tr>
+          <td>race</td>
+          <td>
+            <select class="form-control">
+              <option value="">general</option>
+              <option value="">minion</option>
+              <option value="">warmaster</option>
+              <option value="">golem</option>
+              <option value="">arcanyst</option>
+              <option value="">mech</option>
+              <option value="">battlepet</option>
+              <option value="">spell</option>
+              <option value="">artifact</option>
+            </select>
+          </td>
+          <td>Only return cards with the specified race</td>
+        </tr>
+        <tr>
+          <td>set</td>
+          <td>
+            <select class="form-control">
+              <option value="">base</option>
+              <option value="">dos</option>
+            </select>
+          </td>
+          <td>Only return cards belonging to the specified set: either the <i>Base</i> set or the <i>Denizens of Shim'Zar</i> expansion</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h3>All Cards by Patch</h3>
+  <p>Calling this endpoint will return a JSON of all cards as of the specified patch. This can be filtered by a provided query string.</p>
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-addon">
+        GET
+      </div>
+      <input type="text" class="form-control" value="http://listlyst.com/api/v1/patch/1.63/cards?apikey=">
+      <div class="input-group-addon">
+        <button class="btn-link clipboardJS-trigger" data-clipboard-target="#currentKey">
+          <span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
+          <span class="sr-only">(copy API endpoint)</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table">
+      <caption>Path Parameters</caption>
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>Value</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <code>:patch</code>
+          </td>
+          <td>
+            <select name="" id="" class="form-control">
+              <option value="">1.63</option>
+              <option value="">1.64</option>
+            </select>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="table-responsive">
+    <table class="table">
+      <caption>Query String Parameters</caption>
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>Value</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>faction</td>
+          <td>
+            <select class="form-control">
+              <option value="">lyonar</option>
+              <option value="">songhai</option>
+              <option value="">abyssian</option>
+              <option value="">vetruvian</option>
+              <option value="">magmar</option>
+              <option value="">vanar</option>
+              <option value="">neutral</option>
+            </select>
+          </td>
+          <td>Only return cards belonging to the specified faction</td>
+        </tr>
+        <tr>
+          <td>rarity</td>
+          <td>
+            <select class="form-control">
+              <option value="">basic</option>
+              <option value="">common</option>
+              <option value="">rare</option>
+              <option value="">epic</option>
+              <option value="">legendary</option>
+            </select>
+          </td>
+          <td>Only return cards with the specified rarity</td>
+        </tr>
+        <tr>
+          <td>type</td>
+          <td>
+            <select class="form-control">
+              <option value="">unit</option>
+              <option value="">spell</option>
+              <option value="">artifact</option>
+            </select>
+          </td>
+          <td>Only return cards with the specified type</td>
+        </tr>
+        <tr>
+          <td>race</td>
+          <td>
+            <select class="form-control">
+              <option value="">general</option>
+              <option value="">minion</option>
+              <option value="">warmaster</option>
+              <option value="">golem</option>
+              <option value="">arcanyst</option>
+              <option value="">mech</option>
+              <option value="">battlepet</option>
+              <option value="">spell</option>
+              <option value="">artifact</option>
+            </select>
+          </td>
+          <td>Only return cards with the specified race</td>
+        </tr>
+        <tr>
+          <td>set</td>
+          <td>
+            <select class="form-control">
+              <option value="">base</option>
+              <option value="">dos</option>
+            </select>
+          </td>
+          <td>Only return cards belonging to the specified set: either the <i>Base</i> set or the <i>Denizens of Shim'Zar</i> expansion</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h3>Card by ID</h3>
+  <p>Calling this endpoint will return a JSON of the specified card across all patches it's been available. This is filterable to a specific patch.</p>
+  <div class="form-group">
+    <div class="input-group">
+      <div class="input-group-addon">
+        GET
+      </div>
+      <input type="text" class="form-control" value="http://listlyst.com/api/v1/card/[:id]?apikey=">
+      <div class="input-group-addon">
+        <button class="btn-link clipboardJS-trigger" data-clipboard-target="#currentKey">
+          <span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
+          <span class="sr-only">(copy API endpoint)</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table">
+      <caption>Path Parameters</caption>
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>Value</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <code>:id</code>
+          </td>
+          <td>
+            <select name="" id="" class="form-control">
+              <option value="">1</option>
+              <option value="">12</option>
+            </select>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="table-responsive">
+    <table class="table">
+      <caption>Query String Parameters</caption>
+      <thead>
+        <tr>
+          <th>Field</th>
+          <th>Value</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <code>patch</code>
+          </td>
+          <td>
+            <select name="" id="" class="form-control">
+              <option value="">1.63</option>
+              <option value="">1.64</option>
+            </select>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <h2>Status Codes</h2>
+  <h2>Vocabulary</h2>
+</template>

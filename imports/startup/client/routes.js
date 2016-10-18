@@ -7,3 +7,10 @@ FlowRouter.route( '/', {
     BlazeLayout.render( 'mainLayout', { main: 'controlCenter' } );
   }
 });
+
+FlowRouter.route( '/documentation', {
+  name: 'documentation',
+  action: function() {
+    BlazeLayout.render( 'mainLayout', { main: 'documentation' } );
+  }
+});
