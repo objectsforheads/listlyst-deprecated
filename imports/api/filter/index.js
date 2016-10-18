@@ -34,5 +34,10 @@ Meteor.methods({
       }
     })
     return cardsMostRecent
+  },
+  cardHistorical: function(cardId) {
+    check (cardId, Object);
+    cardHistory = CardsHistorical.find(filters, {fields: {_id: 0}}).fetch();
+    return cardHistory;
   }
 });

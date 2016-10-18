@@ -47,6 +47,16 @@ API = {
       }
       return Meteor.call('filterHistorical', filters);
     },
+    cardHistorical: function(parameters) {
+      cardId = Number(parameters.id);
+      filters = {
+        id: cardId
+      }
+      if (parameters.query.patch) {
+        filters.patch = Number(parameters.query.patch)
+      }
+      return Meteor.call('cardHistorical', filters);
+    },
     parser: function(parameters) {
       // Grab the query from the parameters object - it contains our filters
       var filters = parameters.query;
