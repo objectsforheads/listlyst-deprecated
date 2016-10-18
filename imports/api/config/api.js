@@ -34,10 +34,18 @@ API = {
   },
   operator: {
     // API.relay requests a response to the passed along parameters
-    filter: function(parameters) {
+    filterLatest: function(parameters) {
       parsedFilters = API.operator.parser(parameters);
-
-      return Meteor.call('filterCards', parsedFilters);
+      return Meteor.call('filterLatest', parsedFilters);
+    },
+    filterHistorical: function(parameters) {
+      parsedFilters = API.operator.parser(parameters);
+      patch = parameters.patch;
+      filters = {
+        parsedFilters: parsedFilters,
+        patch: patch
+      }
+      return Meteor.call('filterHistorical', filters);
     },
     parser: function(parameters) {
       // Grab the query from the parameters object - it contains our filters
@@ -67,6 +75,9 @@ API = {
               break
             case 'vanar':
               value = 'Vanar Kindred';
+              break
+            case 'vetruvian':
+              value = "Vetruvian Imperium";
               break
             case 'neutral':
               value = 'Neutral';
