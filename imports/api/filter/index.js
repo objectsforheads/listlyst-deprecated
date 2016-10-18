@@ -1,7 +1,7 @@
 Meteor.methods({
   filterCards: function(filters) {
     check(filters, Object);
-    filteredCards = Cards.find(filters, {fields: {'_id':0}}).fetch();
+    filteredCards = CardsCurrent.find(filters).fetch();
     return filteredCards;
   }
 });
