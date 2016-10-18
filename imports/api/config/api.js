@@ -35,6 +35,11 @@ API = {
   operator: {
     // API.relay requests a response to the passed along parameters
     filter: function(parameters) {
+      parsedFilters = API.operator.parser(parameters);
+
+      return Meteor.call('filterCards', parsedFilters);
+    },
+    parser: function(parameters) {
       // Grab the query from the parameters object - it contains our filters
       var filters = parameters.query;
 
@@ -91,7 +96,7 @@ API = {
 
       }
 
-      return Meteor.call('filterCards', filters);
+      return filters
     }
   }
 }
