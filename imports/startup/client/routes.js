@@ -14,3 +14,10 @@ FlowRouter.route( '/documentation', {
     BlazeLayout.render( 'mainLayout', { main: 'documentation' } );
   }
 });
+
+FlowRouter.route( '/demo', {
+  name: 'demo',
+  action: function() {
+    BlazeLayout.render( 'mainLayout', { main: 'demo' } )
+  }
+})

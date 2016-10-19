@@ -1,0 +1,19 @@
+<template name="demo">
+  <h1>Patchwork</h1>
+  <p>
+    Every card, throughout the patches.
+  </p>
+  {{#if cards}}
+  {{#each cards}}
+    <h2>{{name}}</h2>
+    <ul class="card-history-container">
+      {{#each demo_arrayifyPatchwork this.patches}}
+      <li class="card-history">
+        <span class="card-patch">{{patch}}</span>
+        <pre>{{cardInfo}}</pre>
+      </li>
+      {{/each}}
+    </ul>
+  {{/each}}
+  {{/if}}
+</template>
