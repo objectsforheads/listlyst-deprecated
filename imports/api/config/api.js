@@ -39,11 +39,16 @@ API = {
       return Meteor.call('filterLatest', parsedFilters);
     },
     filterHistorical: function(parameters) {
+      snapshot = parameters.query.snapshot;
+      if (snapshot) {
+        delete parameters.query.snapshot;
+      }
       parsedFilters = API.operator.parser(parameters);
       patch = parameters.patch;
       filters = {
         parsedFilters: parsedFilters,
-        patch: patch
+        patch: patch,
+        snapshot: snapshot
       }
       return Meteor.call('filterHistorical', filters);
     },
