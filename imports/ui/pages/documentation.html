@@ -1,39 +1,38 @@
 <template name="documentation">
   <h1>Documentation</h1>
-
-  <h2>Introduction</h2>
+  <h2 id="introduction">Introduction</h2>
   <p>
     Listlyst is an unofficial Duelyst API built around <a href="https://en.wikipedia.org/wiki/Representational_state_transfer" target="_blank">REST principles</a>. Per these guidelines, Listlyst will respond to requests to its endpoints with a status code, response header, and response body.
   </p>
 
-  <h2>Authorization &amp; Security</h2>
+  <h2 id="authorization-and-security">Authorization &amp; Security</h2>
   <p>
-    Anytime you call Listlyst, you'll need to send your api key along with the request. This key is unique to your account and should only be seen by your eyes and the metaphorical eyes of benevolent server-side code. In the case that your api key is compromised, you can obtain a new one through the <a href="">account portal</a>. Doing so will delete and invalidate your old one, making it highly statistically improbable that you will ever retrieve it from the twisting nether.
+    Anytime you call Listlyst, you'll need to send your api key along with the request. This key is unique to your account and should only be seen by your eyes and the metaphorical eyes of benevolent server-side code. In the case that your api key is compromised, you can obtain a new one through the <a href="/">account portal</a>. Doing so will delete and invalidate your old one, making it highly statistically improbable that you will ever retrieve it from the twisting nether.
   </p>
 
-  <h2>Getting Started</h2>
+  <h2 id="getting-started">Getting Started</h2>
   <p>
     You can call Listlyst through a URL that'll look something like:
   </p>
   <code class="block">
-    http://listlyst.com/api/v1/[endpoint]?[field]=[value]&amp;apikey=[yourKey]
+    {{baseURL}}[endpoint]?[field]=[value]&amp;apikey={{userAPIKey}}
   </code>
   <p>
     <small>
       Field-value pairs of the query string are optional.
     </small>
   </p>
-  <h2>Endpoints</h2>
-  <h3>All Cards</h3>
+  <h2 id="endpoints">Endpoints</h2>
+  <h3 id="all-cards">All Cards</h3>
   <p>Calling this endpoint will return a JSON of every card as of the latest patch. This can be filtered by a provided query string.</p>
   <div class="form-group">
     <div class="input-group">
       <div class="input-group-addon">
         GET
       </div>
-      <input type="text" class="form-control" value="http://listlyst.com/api/v1/cards?faction=lyonar&apikey=">
+      <input id="allCardsURL" type="text" class="form-control" value="{{baseURL}}cards?{{allCards_queries}}apikey={{userAPIKey}}">
       <div class="input-group-addon">
-        <button class="btn-link clipboardJS-trigger" data-clipboard-target="#currentKey">
+        <button class="btn-link clipboardJS-trigger" data-clipboard-target="#allCardsURL">
           <span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
           <span class="sr-only">(copy API endpoint)</span>
         </button>
@@ -54,82 +53,108 @@
         <tr>
           <td>faction</td>
           <td>
-            <select class="form-control">
-              <option value="">lyonar</option>
-              <option value="">songhai</option>
-              <option value="">abyssian</option>
-              <option value="">vetruvian</option>
-              <option value="">magmar</option>
-              <option value="">vanar</option>
-              <option value="">neutral</option>
+            <select class="form-control allCards_query" name="allCards_faction">
+              <option value="" selected>null</option>
+              <option value="lyonar">lyonar</option>
+              <option value="songhai">songhai</option>
+              <option value="abyssian">abyssian</option>
+              <option value="vetruvian">vetruvian</option>
+              <option value="magmar">magmar</option>
+              <option value="vanar">vanar</option>
+              <option value="neutral">neutral</option>
             </select>
           </td>
-          <td>Only return cards belonging to the specified faction</td>
+          <td>
+            <strong>Default Value</strong>: <code>null</code>
+            <br>
+            Only return cards belonging to the specified faction
+          </td>
         </tr>
         <tr>
           <td>rarity</td>
           <td>
-            <select class="form-control">
-              <option value="">basic</option>
-              <option value="">common</option>
-              <option value="">rare</option>
-              <option value="">epic</option>
-              <option value="">legendary</option>
+            <select class="form-control allCards_query" name="allCards_rarity">
+              <option value="" selected>null</option>
+              <option value="basic">basic</option>
+              <option value="common">common</option>
+              <option value="rare">rare</option>
+              <option value="epic">epic</option>
+              <option value="legendary">legendary</option>
             </select>
           </td>
-          <td>Only return cards with the specified rarity</td>
+          <td>
+            <strong>Default Value</strong>: <code>null</code>
+            <br>
+            Only return cards with the specified rarity
+          </td>
         </tr>
         <tr>
           <td>type</td>
           <td>
-            <select class="form-control">
-              <option value="">unit</option>
-              <option value="">spell</option>
-              <option value="">artifact</option>
+            <select class="form-control allCards_query" name="allCards_type">
+              <option value="" selected>null</option>
+              <option value="unit">unit</option>
+              <option value="spell">spell</option>
+              <option value="artifact">artifact</option>
             </select>
           </td>
-          <td>Only return cards with the specified type</td>
+          <td>
+            <strong>Default Value</strong>: <code>null</code>
+            <br>
+            Only return cards with the specified type
+          </td>
         </tr>
         <tr>
           <td>race</td>
           <td>
-            <select class="form-control">
-              <option value="">general</option>
-              <option value="">minion</option>
-              <option value="">warmaster</option>
-              <option value="">golem</option>
-              <option value="">arcanyst</option>
-              <option value="">mech</option>
-              <option value="">battlepet</option>
-              <option value="">spell</option>
-              <option value="">artifact</option>
+            <select class="form-control allCards_query" name="allCards_race">
+              <option value="" selected>null</option>
+              <option value="general">general</option>
+              <option value="minion">minion</option>
+              <option value="warmaster">warmaster</option>
+              <option value="golem">golem</option>
+              <option value="arcanyst">arcanyst</option>
+              <option value="mech">mech</option>
+              <option value="battlepet">battlepet</option>
+              <option value="spell">spell</option>
+              <option value="artifact">artifact</option>
             </select>
           </td>
-          <td>Only return cards with the specified race</td>
+          <td>
+            <strong>Default Value</strong>: <code>null</code>
+            <br>
+            Only return cards with the specified race
+          </td>
         </tr>
         <tr>
           <td>set</td>
           <td>
-            <select class="form-control">
-              <option value="">base</option>
-              <option value="">dos</option>
+            <select class="form-control allCards_query" name="allCards_set">
+              <option value="" selected>null</option>
+              <option value="base">base</option>
+              <option value="dos">dos</option>
             </select>
           </td>
-          <td>Only return cards belonging to the specified set: either the <i>Base</i> set or the <i>Denizens of Shim'Zar</i> expansion</td>
+          <td>
+            <strong>Default Value</strong>: <code>null</code>
+            <br>
+            <code>base</code>: Only return cards belonging to the <i>Base</i> set
+            <br>
+            <code>dos</code>: Only return cards beloning to the <i>Denizens of Shim'Zar</i> expansion</td>
         </tr>
       </tbody>
     </table>
   </div>
-  <h3>All Cards by Patch</h3>
-  <p>Calling this endpoint will return a JSON of all cards as of the specified patch. This can be filtered by a provided query string.</p>
+  <h3 id="all-cards-by-patch">All Cards by Patch</h3>
+  <p>Calling this endpoint will return a JSON of all cards changed or added in the specified patch. This can be filtered by a provided query string much like <a href="#all-cards">All Cards</a>. Additionally, this endpoint has an additional option, <code>snapshot</code>. When set to <code>true</code>, the API will return all cards as of the specified patch.</p>
   <div class="form-group">
     <div class="input-group">
       <div class="input-group-addon">
         GET
       </div>
-      <input type="text" class="form-control" value="http://listlyst.com/api/v1/patch/1.63/cards?apikey=">
+      <input id="cardsByPatchURL" type="text" class="form-control" value="{{baseURL}}patch/{{cardsByPatch_patch}}/cards?{{cardsByPatch_queries}}apikey={{userAPIKey}}">
       <div class="input-group-addon">
-        <button class="btn-link clipboardJS-trigger" data-clipboard-target="#currentKey">
+        <button class="btn-link clipboardJS-trigger" data-clipboard-target="#cardsByPatchURL">
           <span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
           <span class="sr-only">(copy API endpoint)</span>
         </button>
@@ -143,18 +168,25 @@
         <tr>
           <th>Field</th>
           <th>Value</th>
-          <th>Description</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>
-            <code>:patch</code>
+            [:patch]
           </td>
           <td>
-            <select name="" id="" class="form-control">
-              <option value="">1.63</option>
-              <option value="">1.64</option>
+            <select class="form-control cardsByPatch_patch">
+              <option value="0.62">0.62</option>
+              <option value="1.63">1.63</option>
+              <option value="1.64">1.64</option>
+              <option value="1.65">1.65</option>
+              <option value="1.66">1.66</option>
+              <option value="1.67">1.67</option>
+              <option value="1.69">1.69</option>
+              <option value="1.71">1.71</option>
+              <option value="1.73">1.73</option>
+              <option value="1.74">1.74</option>
             </select>
           </td>
         </tr>
@@ -175,82 +207,124 @@
         <tr>
           <td>faction</td>
           <td>
-            <select class="form-control">
-              <option value="">lyonar</option>
-              <option value="">songhai</option>
-              <option value="">abyssian</option>
-              <option value="">vetruvian</option>
-              <option value="">magmar</option>
-              <option value="">vanar</option>
-              <option value="">neutral</option>
+            <select class="form-control cardsByPatch_query" name="cardsByPatch_faction">
+              <option value="" selected>null</option>
+              <option value="lyonar">lyonar</option>
+              <option value="songhai">songhai</option>
+              <option value="abyssian">abyssian</option>
+              <option value="vetruvian">vetruvian</option>
+              <option value="magmar">magmar</option>
+              <option value="vanar">vanar</option>
+              <option value="neutral">neutral</option>
             </select>
           </td>
-          <td>Only return cards belonging to the specified faction</td>
+          <td>
+            <strong>Default Value</strong>: <code>null</code>
+            <br>
+            Only return cards belonging to the specified faction
+          </td>
         </tr>
         <tr>
           <td>rarity</td>
           <td>
-            <select class="form-control">
-              <option value="">basic</option>
-              <option value="">common</option>
-              <option value="">rare</option>
-              <option value="">epic</option>
-              <option value="">legendary</option>
+            <select class="form-control cardsByPatch_query" name="cardsByPatch_rarity">
+              <option value="" selected>null</option>
+              <option value="basic">basic</option>
+              <option value="common">common</option>
+              <option value="rare">rare</option>
+              <option value="epic">epic</option>
+              <option value="legendary">legendary</option>
             </select>
           </td>
-          <td>Only return cards with the specified rarity</td>
+          <td>
+            <strong>Default Value</strong>: <code>null</code>
+            <br>
+            Only return cards with the specified rarity
+          </td>
         </tr>
         <tr>
           <td>type</td>
           <td>
-            <select class="form-control">
-              <option value="">unit</option>
-              <option value="">spell</option>
-              <option value="">artifact</option>
+            <select class="form-control cardsByPatch_query" name="cardsByPatch_type">
+              <option value="" selected>null</option>
+              <option value="unit">unit</option>
+              <option value="spell">spell</option>
+              <option value="artifact">artifact</option>
             </select>
           </td>
-          <td>Only return cards with the specified type</td>
+          <td>
+            <strong>Default Value</strong>: <code>null</code>
+            <br>
+            Only return cards with the specified type
+          </td>
         </tr>
         <tr>
           <td>race</td>
           <td>
-            <select class="form-control">
-              <option value="">general</option>
-              <option value="">minion</option>
-              <option value="">warmaster</option>
-              <option value="">golem</option>
-              <option value="">arcanyst</option>
-              <option value="">mech</option>
-              <option value="">battlepet</option>
-              <option value="">spell</option>
-              <option value="">artifact</option>
+            <select class="form-control cardsByPatch_query" name="cardsByPatch_race">
+              <option value="" selected>null</option>
+              <option value="general">general</option>
+              <option value="minion">minion</option>
+              <option value="warmaster">warmaster</option>
+              <option value="golem">golem</option>
+              <option value="arcanyst">arcanyst</option>
+              <option value="mech">mech</option>
+              <option value="battlepet">battlepet</option>
+              <option value="spell">spell</option>
+              <option value="artifact">artifact</option>
             </select>
           </td>
-          <td>Only return cards with the specified race</td>
+          <td>
+            <strong>Default Value</strong>: <code>null</code>
+            <br>
+            Only return cards with the specified race
+          </td>
         </tr>
         <tr>
           <td>set</td>
           <td>
-            <select class="form-control">
-              <option value="">base</option>
-              <option value="">dos</option>
+            <select class="form-control cardsByPatch_query" name="cardsByPatch_set">
+              <option value="" selected>null</option>
+              <option value="base">base</option>
+              <option value="dos">dos</option>
             </select>
           </td>
-          <td>Only return cards belonging to the specified set: either the <i>Base</i> set or the <i>Denizens of Shim'Zar</i> expansion</td>
+          <td>
+            <strong>Default Value</strong>: <code>null</code>
+            <br>
+            <code>base</code>: Only return cards belonging to the <i>Base</i> set
+            <br>
+            <code>dos</code>: Only return cards beloning to the <i>Denizens of Shim'Zar</i> expansion</td>
+        </tr>
+        <tr>
+          <td>snapshot</td>
+          <td>
+            <select class="form-control cardsByPatch_query" name="cardsByPatch_snapshot">
+              <option value="true">true</option>
+              <option value="false" selected>false</option>
+            </select>
+          </td>
+          <td>
+            <strong>Default Value</strong>: <code>false</code>
+            <br>
+            <code>true</code>: return all cards as of this patch
+            <br>
+            <code>false</code>: return only cards that were added or changed in this patch
+          </td>
         </tr>
       </tbody>
     </table>
   </div>
-  <h3>Card by ID</h3>
+  <h3 id="card-by-id">Card by ID</h3>
   <p>Calling this endpoint will return a JSON of the specified card across all patches it's been available. This is filterable to a specific patch.</p>
   <div class="form-group">
     <div class="input-group">
       <div class="input-group-addon">
         GET
       </div>
-      <input type="text" class="form-control" value="http://listlyst.com/api/v1/card/[:id]?apikey=">
+      <input id="cardByIdURL" type="text" class="form-control" value="{{baseURL}}card/{{cardById_id}}?{{cardById_queries}}apikey={{userAPIKey}}">
       <div class="input-group-addon">
-        <button class="btn-link clipboardJS-trigger" data-clipboard-target="#currentKey">
+        <button class="btn-link clipboardJS-trigger" data-clipboard-target="#cardByIdURL">
           <span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
           <span class="sr-only">(copy API endpoint)</span>
         </button>
@@ -264,19 +338,15 @@
         <tr>
           <th>Field</th>
           <th>Value</th>
-          <th>Description</th>
         </tr>
       </thead>
       <tbody>
         <tr>
           <td>
-            <code>:id</code>
+            [:id]
           </td>
           <td>
-            <select name="" id="" class="form-control">
-              <option value="">1</option>
-              <option value="">12</option>
-            </select>
+            <input type="text" value="1" class="form-control cardById_id">
           </td>
         </tr>
       </tbody>
@@ -295,13 +365,29 @@
       <tbody>
         <tr>
           <td>
-            <code>patch</code>
+            patch
           </td>
           <td>
-            <select name="" id="" class="form-control">
-              <option value="">1.63</option>
-              <option value="">1.64</option>
+            <select name="cardById_patch" class="form-control cardById_query">
+              <option value="">null</option>
+              <option value="0.62">0.62</option>
+              <option value="1.63">1.63</option>
+              <option value="1.64">1.64</option>
+              <option value="1.65">1.65</option>
+              <option value="1.66">1.66</option>
+              <option value="1.67">1.67</option>
+              <option value="1.69">1.69</option>
+              <option value="1.71">1.71</option>
+              <option value="1.73">1.73</option>
+              <option value="1.74">1.74</option>
             </select>
+          </td>
+          <td>
+            Default Value: <code>null</code>
+            <br>
+            <code>null</code>: returns the entire card history
+            <br>
+            <code>#.##</code>: returns the card history as of that patch
           </td>
         </tr>
       </tbody>
