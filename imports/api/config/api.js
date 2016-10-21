@@ -100,6 +100,17 @@ API = {
           }
         }
 
+        // Battle pets exist
+        else if (key === 'race') {
+          switch(value) {
+            case 'battlepet':
+              value = 'Battle Pet';
+              break;
+            default:
+              value = value.charAt(0).toUpperCase() + value.slice(1);
+          }
+        }
+
         // User inputs a set shorthand so we'll expand it here
         else if (key === 'set') {
           switch(value) {

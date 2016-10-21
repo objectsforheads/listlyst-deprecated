@@ -50,9 +50,10 @@ Meteor.methods({
       return result
     }
   },
-  cardHistorical: function(cardId) {
-    check (cardId, Object);
-    cardHistory = CardsHistorical.find(filters, {fields: {_id: 0}}).fetch();
+  cardHistorical: function(filters) {
+    check (filters, Object);
+    filters.patch = {$lte: Number(filters.patch)};
+    cardHistory = CardsHistorical.find(filters, {limit: 1, sort: {patch: -1}, fields: {_id: 0}}).fetch();
     return cardHistory;
   }
 });
