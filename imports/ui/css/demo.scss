@@ -1,0 +1,91 @@
+
+.sort-filter-wrapper {
+  display: inline-block;
+}
+.card-patch {
+  width: 33%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+// Set up an array containing all the possible sort options
+$sortFilters: 'faction', 'rarity', 'name', 'manaCost', 'type', 'race', 'attack', 'health';
+
+// For each, set up the necessary show/hide css
+@each $sortFilter in $sortFilters {
+  .card-history-container.sort-filter__show-only-#{$sortFilter} {
+    .card-history:not([data-#{$sortFilter}]) {
+      display: none !important;
+    }
+  }
+  .card-history-container.sort-filter__hide-#{$sortFilter} {
+    .card-history[data-#{$sortFilter}] {
+      display: none !important;
+    }
+  }
+}
+
+// If any kind of filter is active, by default hide all the cards
+.card-history-container.filter-filter {
+  .card-history {
+    display: none;
+  }
+}
+
+
+
+
+
+// Iterate through the possible min/max manaCost values and
+// health values, since they happen to be the same
+
+// While this will result in an exhorbiant number of css selectors
+// w/gzip, the file size cost is less than the usability cost of other solutions
+// which involve touching DOM more times than a single class addition
+// At some point, someone should run a performance test
+
+// Loop through possible ranges and hide anything not within the inputted range
+@for $iMin from 0 through 24 {
+@for $iMax from 1 through 25 {
+  @if $iMax > $iMin {
+    .card-history-container.filter-filter__manaCost-#{$iMin}.filter-filter__manaCost-#{$iMax} {
+      @for $iCurrent from 0 through 25 {
+      @if $iCurrent < $iMin or $iCurrent > $iMax {
+        [data-manaCost="#{$iCurrent}"] {
+          display: none !important;
+        }
+      }
+      }
+    }
+  }
+}}
+@for $iMin from 0 through 24 {
+@for $iMax from 1 through 25 {
+  @if $iMax > $iMin {
+    .card-history-container.filter-filter__health-#{$iMin}.filter-filter__health-#{$iMax} {
+      @for $iCurrent from 0 through 25 {
+      @if $iCurrent < $iMin or $iCurrent > $iMax {
+        [data-health="#{$iCurrent}"] {
+          display: none !important;
+        }
+      }
+      }
+    }
+  }
+}}
+
+// Then iterate through the possible min/max attack values the same way
+@for $iMin from 0 through 12 {
+@for $iMax from 1 through 11 {
+  @if $iMax > $iMin {
+    .card-history-container.filter-filter__attack-#{$iMin}.filter-filter__attack-#{$iMax} {
+      @for $iCurrent from 0 through 25 {
+      @if $iCurrent < $iMin or $iCurrent > $iMax {
+        [data-manaCost="#{$iCurrent}"] {
+          display: none !important;
+        }
+      }
+      }
+    }
+  }
+}}

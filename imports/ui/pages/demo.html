@@ -3,17 +3,84 @@
   <p>
     Every card, throughout the patches.
   </p>
+  {{> demo_sortFiltersContainer}}
+  {{> demo_filterFiltersContainer}}
+
   {{#if cards}}
-  {{#each cards}}
-    <h2>{{name}}</h2>
-    <ul class="card-history-container">
-      {{#each demo_arrayifyPatchwork this.patches}}
-      <li class="card-history">
-        <span class="card-patch">{{patch}}</span>
-        <pre>{{cardInfo}}</pre>
-      </li>
-      {{/each}}
-    </ul>
-  {{/each}}
+  <h2>Cards</h2>
+  <div class="card-history-container">
+    {{#each cards}}
+      {{> demo_cardHistory this}}
+    {{/each}}
+  </div>
+  {{else}}
+    loading
   {{/if}}
+</template>
+
+<template name="demo_cardHistory">
+  <div class="card-history" {{attributes}}>
+    <h3>{{name}}</h3>
+    {{#each demo_arrayifyPatchwork this.patches}}
+    <div class="card-patch">
+      <p>patch {{patch}}</p>
+      <pre>{{cardInfo}}</pre>
+    </div>
+    {{/each}}
+  </div>
+</template>
+
+<template name="demo_filterFiltersContainer">
+  <h2>Filter</h2>
+  {{#each filters}}
+    {{> demo_filterFilter}}
+  {{/each}}
+</template>
+
+<template name="demo_filterFilter">
+  <div class="filter-filter-container">
+    <h3>{{name}}</h3>
+    {{getFilterName}}
+    {{#if isInputCheckbox}}
+      {{#each this.options}}
+        {{> demo_filterFilterInput filterValue=this filterName=passFilterName}}
+      {{/each}}
+    {{/if}}
+    {{#if isInputRange}}
+      <div class="filter-filter--range" id="filter-filter__{{handle}}" data-min="{{this.options.[0]}}" data-max="{{this.options.[1]}}">
+      </div>
+    {{/if}}
+  </div>
+</template>
+
+<template name="demo_filterFilterInput">
+    <label class="filter-filter-label">
+      <input type="checkbox" class="filter-filter--checkbox" data-filterName="{{filterName}}" value="{{filterValue}}">
+      {{filterValue}}
+    </label>
+</template>
+
+<template name="demo_sortFiltersContainer">
+  <h2>Sort</h2>
+  <h3>First by:</h3>
+  {{> demo_sortFilters order="first"}}
+  <h3>Then by:</h3>
+  {{> demo_sortFilters order="second" disabled=firstSortFilter}}
+</template>
+
+<template name="demo_sortFilters">
+  <div class="sort-filters">
+    {{filterOrder}}
+    {{filterDisabled}}
+    {{#each filters}}
+      {{> demo_sortFilter name=this value=filterSelected order=passfilterOrder disabled=passDisabled}}
+    {{/each}}
+  </div>
+</template>
+<template name="demo_sortFilter">
+  <div class="sort-filter-wrapper {{order}}-filter">
+    <input type="radio" class="sort-filter sortCards" name="{{order}}-sort-filter" id="{{order}}-sort-by_{{name}}" value="{{name}}" disabled="{{firstFilter}}">
+    <label for="{{order}}-sort-by_{{name}}">{{filterName}}</label>
+    <input type="checkbox" class="sortCards" id="sort-by_{{name}}--alpha" value="ascending" disabled="{{isSelected}}">
+  </div>
 </template>

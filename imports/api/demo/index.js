@@ -8,7 +8,7 @@ Meteor.methods({
 
     var futures = patches.map(function(patch) {
       var future = new Future();
-      var apiURL = 'http://localhost:3000/api/v1/patch/' + patch + '/cards?apikey=5a4f0d689917996443492feffe5ec8ac';
+      var apiURL = 'http://listlyst.com/api/v1/patch/' + patch + '/cards?apikey=157b829645ea32f7e584beab7d6c06a5';
 
       future.return(HTTP.get( apiURL, {} ))
       return future;
