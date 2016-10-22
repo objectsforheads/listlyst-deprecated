@@ -1,4 +1,5 @@
 import './demo.html';
+import '../components/loadingScreen.html';
 
 Template.registerHelper('demo_arrayifyPatchwork',function(obj){
     var result = [];
@@ -173,11 +174,17 @@ Template.demo_filterFiltersContainer.onRendered(function() {
   var slider_manaCost = document.getElementById('filter-filter__manaCost');
   noUiSlider.create(slider_manaCost, {
   	start: [0, 25],
+    margin: 1,
     step: 1,
   	connect: true,
   	range: {
   		'min': 0,
   		'max': 25
+  	},
+  	pips: {
+  		mode: 'positions',
+  		values: [0,20,40,60,80,100],
+  		density: 3.84615384615
   	},
   	format: {
   	  to: function ( value ) {
@@ -198,11 +205,17 @@ Template.demo_filterFiltersContainer.onRendered(function() {
   var slider_health = document.getElementById('filter-filter__health');
   noUiSlider.create(slider_health, {
   	start: [0, 25],
+    margin: 1,
     step: 1,
   	connect: true,
   	range: {
   		'min': 0,
   		'max': 25
+  	},
+  	pips: {
+  		mode: 'positions',
+  		values: [0,20,40,60,80,100],
+  		density: 3.84615384615
   	},
   	format: {
   	  to: function ( value ) {
@@ -223,11 +236,17 @@ Template.demo_filterFiltersContainer.onRendered(function() {
   var slider_attack = document.getElementById('filter-filter__attack');
   noUiSlider.create(slider_attack, {
   	start: [0, 12],
+    margin: 1,
     step: 1,
   	connect: true,
   	range: {
   		'min': 0,
   		'max': 12
+  	},
+  	pips: {
+      mode: 'count',
+  		values: 5,
+  		density: 8.33
   	},
   	format: {
   	  to: function ( value ) {
@@ -270,6 +289,7 @@ Template.demo_filterFilter.helpers({
 
 Template.demo_filterFilterInput.events({
   'click .filter-filter--checkbox': function(e) {
+    $(e.currentTarget).closest('.filter-filter-wrapper').toggleClass('selected');
     // There are too many possible combinations of filters to practically modify
     // based on class in the .card-history-container like we do for sort-filter
     // Instead, we'll add a css block to only show the filtered for cards
@@ -320,8 +340,6 @@ Template.demo_filterFilterInput.events({
       });
       classes = classes.join();
 
-      console.log(classes)
-
       // Complete the CSS string
       var css = "/* css block filter filter styling */ " + classes + " {display:initial;}"
 
@@ -352,12 +370,6 @@ Template.demo_filterFilterInput.events({
   }
 })
 
-Template.demo_filterFilterInput.helpers({
-  test: function() {
-    console.log(this)
-    console.log(this.handle)
-  }
-})
 
 Template.demo_sortFiltersContainer.onCreated(function() {
   this.firstSortFilter = new ReactiveVar(null);
@@ -372,6 +384,10 @@ Template.demo_sortFiltersContainer.helpers({
 Template.demo_sortFiltersContainer.events({
   'click .first-filter>.sort-filter': function(e, template) {
     return template.firstSortFilter.set($(e.currentTarget).val());
+  },
+  'click .sort-filter-wrapper': function(e) {
+    $(e.currentTarget).siblings().removeClass('selected');
+    $(e.currentTarget).addClass('selected');
   },
   'click .sortCards': function(e) {
     $('.card-history-container').removeClass(function (index, css) {

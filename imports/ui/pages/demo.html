@@ -14,19 +14,21 @@
     {{/each}}
   </div>
   {{else}}
-    loading
+    {{> loadingScreen}}
   {{/if}}
 </template>
 
 <template name="demo_cardHistory">
   <div class="card-history" {{attributes}}>
     <h3>{{name}}</h3>
-    {{#each demo_arrayifyPatchwork this.patches}}
-    <div class="card-patch">
-      <p>patch {{patch}}</p>
-      <pre>{{cardInfo}}</pre>
+    <div class="card-patches">
+      {{#each demo_arrayifyPatchwork this.patches}}
+      <div class="card-patch">
+        <p>patch {{patch}}</p>
+        <pre>{{cardInfo}}</pre>
+      </div>
+      {{/each}}
     </div>
-    {{/each}}
   </div>
 </template>
 
@@ -47,17 +49,21 @@
       {{/each}}
     {{/if}}
     {{#if isInputRange}}
-      <div class="filter-filter--range" id="filter-filter__{{handle}}" data-min="{{this.options.[0]}}" data-max="{{this.options.[1]}}">
+      <div class="filter-filter-range-wrapper">
+        <div class="filter-filter--range" id="filter-filter__{{handle}}" data-min="{{this.options.[0]}}" data-max="{{this.options.[1]}}">
+        </div>
       </div>
     {{/if}}
   </div>
 </template>
 
 <template name="demo_filterFilterInput">
-    <label class="filter-filter-label">
-      <input type="checkbox" class="filter-filter--checkbox" data-filterName="{{filterName}}" value="{{filterValue}}">
-      {{filterValue}}
-    </label>
+    <div class="filter-filter-wrapper">
+      <label class="filter-filter-label">
+        <input type="checkbox" class="filter-filter--checkbox" data-filterName="{{filterName}}" value="{{filterValue}}">
+        {{filterValue}}
+      </label>
+    </div>
 </template>
 
 <template name="demo_sortFiltersContainer">
@@ -80,7 +86,8 @@
 <template name="demo_sortFilter">
   <div class="sort-filter-wrapper {{order}}-filter">
     <input type="radio" class="sort-filter sortCards" name="{{order}}-sort-filter" id="{{order}}-sort-by_{{name}}" value="{{name}}" disabled="{{firstFilter}}">
-    <label for="{{order}}-sort-by_{{name}}">{{filterName}}</label>
+    <label for="{{order}}-sort-by_{{name}}" class="sort-filter-label">{{filterName}}</label>
     <input type="checkbox" class="sortCards" id="sort-by_{{name}}--alpha" value="ascending" disabled="{{isSelected}}">
+    <label for="sort-by_{{name}}--alpha" class="asc-desc-label"><span class="sr-only">Ascending</span></label>
   </div>
 </template>

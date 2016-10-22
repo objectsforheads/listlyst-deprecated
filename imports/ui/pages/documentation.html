@@ -180,11 +180,11 @@
   </form>
   {{#if request_allCards}}
     <h4>Response Status</h4>
-    <pre>{{allCards_responseStatus}}</pre>
+    <pre class="docs_responseResult">{{allCards_responseStatus}}</pre>
     <h4>Response Headers</h4>
-    <pre>{{allCards_responseHeader}}</pre>
+    <pre class="docs_responseResult">{{allCards_responseHeader}}</pre>
     <h4>Response Body</h4>
-    <pre>{{allCards_responseBody}}</pre>
+    <pre class="docs_responseResult">{{allCards_responseBody}}</pre>
   {{/if}}
   <h3 id="all-cards-by-patch">All Cards by Patch</h3>
   <p>Calling this endpoint will return a JSON of all cards changed or added in the specified patch. This can be filtered by a provided query string much like <a href="#all-cards">All Cards</a>. Additionally, this endpoint has an additional option, <code>snapshot</code>. When set to <code>true</code>, the API will return all cards as of the specified patch.</p>
@@ -365,11 +365,11 @@
   </form>
   {{#if request_cardsByPatch}}
     <h4>Response Status</h4>
-    <pre>{{cardsByPatch_responseStatus}}</pre>
+    <pre class="docs_responseResult">{{cardsByPatch_responseStatus}}</pre>
     <h4>Response Headers</h4>
-    <pre>{{cardsByPatch_responseHeader}}</pre>
+    <pre class="docs_responseResult">{{cardsByPatch_responseHeader}}</pre>
     <h4>Response Body</h4>
-    <pre>{{cardsByPatch_responseBody}}</pre>
+    <pre class="docs_responseResult">{{cardsByPatch_responseBody}}</pre>
   {{/if}}
   <h3 id="card-by-id">Card by ID</h3>
   <p>Calling this endpoint will return a JSON of the specified card across all patches it's been available. This is filterable to a specific patch.</p>
@@ -457,10 +457,10 @@
   </form>
   {{#if request_cardById}}
     <h4>Response Status</h4>
-    <pre>{{cardById_responseStatus}}</pre>
+    <pre class="docs_responseResult">{{cardById_responseStatus}}</pre>
     <h4>Response Headers</h4>
-    <pre>{{cardById_responseHeader}}</pre>
+    <pre class="docs_responseResult">{{cardById_responseHeader}}</pre>
     <h4>Response Body</h4>
-    <pre>{{cardById_responseBody}}</pre>
+    <pre class="docs_responseResult">{{cardById_responseBody}}</pre>
   {{/if}}
 </template>

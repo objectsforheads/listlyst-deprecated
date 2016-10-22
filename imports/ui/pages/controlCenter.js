@@ -64,9 +64,6 @@ Template.controlCenter.events({
       if (error) {
         Bert.alert(error.reason, 'danger');
       }
-      else {
-        Bert.alert('Welcome!', 'success');
-      }
     });
   },
   'click .toggleAccountAccess': function() {

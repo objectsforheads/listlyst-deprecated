@@ -1,0 +1,18 @@
+@media only screen and (min-width: 1000px) {
+  .site-wrapper {
+    display: flex;
+  }
+
+  .site-sidebar {
+    flex: 1;
+  }
+}
+
+.site-footer {
+  margin-bottom: 1.5rem;
+}
+
+.docs_responseResult {
+  max-height: 20em;
+  overflow: auto;
+}

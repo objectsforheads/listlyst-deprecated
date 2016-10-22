@@ -5,6 +5,10 @@ BrowserPolicy.content.allowOriginForAll('fonts.gstatic.com');
 // Allow CDNs
 BrowserPolicy.content.allowOriginForAll('cdnjs.cloudflare.com');
 
+// Allow lazy sourcing of image assets
+BrowserPolicy.content.allowOriginForAll('i67.tinypic.com');
+BrowserPolicy.content.allowOriginForAll('i63.tinypic.com');
+
 import './routes.js';
 
 // Update patch data

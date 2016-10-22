@@ -3,20 +3,38 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/tinysort/2.3.6/tinysort.min.js"></script>
   </head>
   <div class="container">
-    <div class="row">
-      <div class="col-sm-12 col-md-6 text-right">
-        <h1>listlyst</h1>
+    <div class="row site-wrapper">
+      <div class="col-sm-12 col-md-12 text-right site-sidebar">
+        <h1 class="site-title"><a href="/">listlyst</a></h1>
         <nav>
+          <p class="hug">
+            <a href="/documentation">documentation</a> | <a href="/demo">demo</a>
+          </p>
           {{#if currentUser}}
           <p>Howdy, {{currentUser.username}}</p>
           {{> userLogout}}
+          {{else}}
+          <p>
+            <a href="/">Sign Up/Log In</a>
+          </p>
           {{/if}}
         </nav>
       </div>
-      <div class="col-sm-12 col-md-6">
+      <div class="col-sm-12 col-md-12 site-content">
         {{> mainContent}}
       </div>
     </div>
+    <footer class="site-footer">
+      <div class="row">
+        <div class="col-sm-12 text-right">
+          <p><small>
+            <a href="http://duelyst.com">Duelyst</a> content and materials are trademarks and copyrights of Counterplay Games, Inc.
+            <br>
+            <a href="/">listlyst</a> was created by and is maintained by <a href="http://objectsforheads.com" target="_blank">objectsforheads</a> because meme puns are quality content
+          </small></p>
+        </div>
+      </div>
+    </footer>
   </div>
 </template>
 
