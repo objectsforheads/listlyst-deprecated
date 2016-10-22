@@ -614,7 +614,7 @@ p1_63 = [{
 	"description": "Ranged\nYour other minions with Ranged have +1 Attack.",
 	"manaCost": 4,
 	"type": "Unit",
-	"race": "WARMASTER",
+	"race": "Warmaster",
 	"attack": 2,
 	"health": 4,
 	"set": "Base"
@@ -626,7 +626,7 @@ p1_63 = [{
 	"description": "Flying\nYour other minions with Flying cost 1 less.",
 	"manaCost": 3,
 	"type": "Unit",
-	"race": "WARMASTER",
+	"race": "Warmaster",
 	"attack": 3,
 	"health": 3,
 	"set": "Base"
@@ -638,7 +638,7 @@ p1_63 = [{
 	"description": "Dying Wish: Summon a minion with Dying Wish from your action bar.",
 	"manaCost": 4,
 	"type": "Unit",
-	"race": "WARMASTER",
+	"race": "Warmaster",
 	"attack": 2,
 	"health": 4,
 	"set": "Base"
@@ -650,7 +650,7 @@ p1_63 = [{
 	"description": "Provoke\nYour other minions with Provoke can move two additional spaces.",
 	"manaCost": 5,
 	"type": "Unit",
-	"race": "WARMASTER",
+	"race": "Warmaster",
 	"attack": 4,
 	"health": 6,
 	"set": "Base"
