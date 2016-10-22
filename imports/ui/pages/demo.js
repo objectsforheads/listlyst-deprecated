@@ -320,6 +320,8 @@ Template.demo_filterFilterInput.events({
       });
       classes = classes.join();
 
+      console.log(classes)
+
       // Complete the CSS string
       var css = "/* css block filter filter styling */ " + classes + " {display:initial;}"
 
@@ -330,9 +332,6 @@ Template.demo_filterFilterInput.events({
       else {
         $('style.filterFilterCSS').text(css);
       }
-
-      return false;
-
     }
 
     function generateFilterFilterClasses(filters) {
