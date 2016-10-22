@@ -36,12 +36,19 @@ $duelystWhite: #FBFCFE;
 
 .card-patches {
   margin: 0 -0.5rem;
+
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
 }
 .card-patch {
   width: 33%;
   display: inline-block;
   vertical-align: top;
-  padding: 0.5rem;
+  padding: 0 0.5rem;
+  float: left;
 }
 
 .filter-filter-wrapper,
