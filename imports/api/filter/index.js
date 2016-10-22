@@ -52,7 +52,6 @@ Meteor.methods({
   },
   cardHistorical: function(filters) {
     check (filters, Object);
-    console.log(filters)
     if (filters.patch) {
       filters.patch = {$lte: Number(filters.patch)};
       var cardHistory = CardsHistorical.find(filters, {limit: 1, sort: {patch: -1}, fields: {_id: 0}}).fetch();
