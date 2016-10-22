@@ -7,6 +7,9 @@ BrowserPolicy.content.allowOriginForAll('cdnjs.cloudflare.com');
 
 import './routes.js';
 
+// Update patch data
+// import '../../api/seed';
+
 // actual API
 import '../../api/config/api.js';
 // User's API Key functionality
