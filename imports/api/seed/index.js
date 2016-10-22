@@ -43,5 +43,5 @@ addPatch(p1_66, 1.66);
 addPatch(p1_67, 1.67);
 addPatch(p1_69, 1.69);
 addPatch(p1_71, 1.71);
-addPatch(p1_71, 1.73);
-addPatch(p1_71, 1.74);
+addPatch(p1_73, 1.73);
+addPatch(p1_74, 1.74);
