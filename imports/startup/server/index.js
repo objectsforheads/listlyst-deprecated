@@ -9,6 +9,9 @@ BrowserPolicy.content.allowOriginForAll('cdnjs.cloudflare.com');
 BrowserPolicy.content.allowOriginForAll('i67.tinypic.com');
 BrowserPolicy.content.allowOriginForAll('i63.tinypic.com');
 
+// Kadira monitoring
+Kadira.connect('HxkXzqkqymTPHyC2s', '1deb4a59-00c6-4a21-a642-d736325b5571');
+
 import './routes.js';
 
 // Update patch data
