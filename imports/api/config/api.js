@@ -1,10 +1,10 @@
 API = {
   // Take a user request and deliver the appropriate response back
-  relay: function(parameters, operation) {
+  relay: function(parameters, operation, response) {
     // User has sent a request and is requesting a response back
     // Check with API.authenticator that the user has proper authorization for their request
     apikey = parameters.query.apikey;
-    var authorized = API.authenticator(apikey);
+    var authorized = API.support.authenticator(apikey);
 
     // If they're authorized,
     // go ahead and pass the request to API.operator and wait for a response
@@ -14,45 +14,35 @@ API = {
       delete parameters.query.apikey;
 
       // pass parameters along to API.operator to fetch a response
-      return API.operator[operation](parameters);
+      return API.operator[operation](response, parameters);
     }
     // If they're not authorized,
     // stop here and return a denied message to API.relay
     else {
-      return { error: 401, message: "Slow down there, friend! The clerical bots say your API key is invalid. They don't know why it's invalid, but their human managers suggest checking if the API key's been mistyped or scrubbed. If the problem persists, contact support to talk to a live human being for help." };
-    }
-  },
-  // Make sure the user is authorized to access the API
-  authenticator: function(apikey) {
-    var userCheck = APIKeys.findOne({'key': apikey}, {fields: {'owner': 1}});
-    if (userCheck) {
-      return true;
-    }
-    else {
-      return false;
+      return API.support.responder(response, 401, { error: 401, message: "Invalid API key." });
     }
   },
   operator: {
     // API.relay requests a response to the passed along parameters
-    filterLatest: function(parameters) {
-      parsedFilters = API.operator.parser(parameters);
-      return Meteor.call('filterLatest', parsedFilters);
+    filterLatest: function(response, parameters) {
+      parsedFilters = API.support.parser(parameters);
+      return API.support.responder(response, 200, Meteor.call('filterLatest', parsedFilters));
     },
-    filterHistorical: function(parameters) {
+    filterHistorical: function(response, parameters) {
       snapshot = parameters.query.snapshot;
       if (snapshot) {
         delete parameters.query.snapshot;
       }
-      parsedFilters = API.operator.parser(parameters);
+      parsedFilters = API.support.parser(parameters);
       patch = parameters.patch;
       filters = {
         parsedFilters: parsedFilters,
         patch: patch,
         snapshot: snapshot
       }
-      return Meteor.call('filterHistorical', filters);
+      return API.support.responder(response, 200, Meteor.call('filterHistorical', filters));
     },
-    cardHistorical: function(parameters) {
+    cardHistorical: function(response, parameters) {
       cardId = Number(parameters.id);
       filters = {
         id: cardId
@@ -60,7 +50,19 @@ API = {
       if (parameters.query.patch) {
         filters.patch = Number(parameters.query.patch)
       }
-      return Meteor.call('cardHistorical', filters);
+      return API.support.responder(response, 200, Meteor.call('cardHistorical', filters));
+    }
+  },
+  support: {
+    // Make sure the user is authorized to access the API
+    authenticator: function(apikey) {
+      var userCheck = APIKeys.findOne({'key': apikey}, {fields: {'owner': 1}});
+      if (userCheck) {
+        return true;
+      }
+      else {
+        return false;
+      }
     },
     parser: function(parameters) {
       // Grab the query from the parameters object - it contains our filters
@@ -134,6 +136,10 @@ API = {
       }
 
       return filters
+    },
+    responder: function(request, statusCode, data) {
+      request.statusCode = statusCode;
+      request.end( JSON.stringify( data ) );
     }
   }
 }
