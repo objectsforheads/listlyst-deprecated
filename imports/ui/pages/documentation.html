@@ -22,6 +22,32 @@
       Field-value pairs of the query string are optional.
     </small>
   </p>
+  <h2>Status Codes</h2>
+  <div class="table-responsive">
+    <table class="table">
+      <caption>Status Codes</caption>
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th>Definition</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>200</td>
+          <td>OK - Response received from server</td>
+        </tr>
+        <tr>
+          <td>401</td>
+          <td>Unauthorized - API key invalid or email unverified</td>
+        </tr>
+        <tr>
+          <td>50x</td>
+          <td>Server Error - Listlyst not responding as expected</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <h2 id="endpoints">Endpoints</h2>
   <h3 id="all-cards">All Cards</h3>
   <p>Calling this endpoint will return a JSON of every card as of the latest patch. This can be filtered by a provided query string.</p>
@@ -437,30 +463,4 @@
     <h4>Response Body</h4>
     <pre>{{cardById_responseBody}}</pre>
   {{/if}}
-  <h2>Status Codes</h2>
-  <div class="table-responsive">
-    <table class="table">
-      <caption>Status Codes</caption>
-      <thead>
-        <tr>
-          <th>Code</th>
-          <th>Definition</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>200</td>
-          <td>OK - Response received from server</td>
-        </tr>
-        <tr>
-          <td>401</td>
-          <td>Unauthorized - API key invalid or email unverified</td>
-        </tr>
-        <tr>
-          <td>50x</td>
-          <td>Server Error - Listlyst not responding as expected</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
 </template>

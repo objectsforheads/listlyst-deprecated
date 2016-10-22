@@ -173,9 +173,7 @@ Template.documentation.events({
         HTTP.get(url, {}, function(err, data)  {
           template.allCards_responseStatus.set(data.statusCode);
           template.allCards_responseHeader.set(JSON.stringify(data.headers, null, 2));
-          if (!err) {
-            template.allCards_responseBody.set(JSON.stringify(data.data, null, 2));
-          }
+          template.allCards_responseBody.set(JSON.stringify(data.data, null, 2));
         })
         break
       case 'apiRequest_cardsByPatch':
@@ -186,9 +184,7 @@ Template.documentation.events({
         HTTP.get(url, {}, function(err, data)  {
           template.cardsByPatch_responseStatus.set(data.statusCode);
           template.cardsByPatch_responseHeader.set(JSON.stringify(data.headers, null, 2));
-          if (!err) {
-            template.cardsByPatch_responseBody.set(JSON.stringify(data.data, null, 2));
-          }
+          template.cardsByPatch_responseBody.set(JSON.stringify(data.data, null, 2));
         })
         break
       case 'apiRequest_cardById':
@@ -199,9 +195,7 @@ Template.documentation.events({
         HTTP.get(url, {}, function(err, data)  {
           template.cardById_responseStatus.set(data.statusCode);
           template.cardById_responseHeader.set(JSON.stringify(data.headers, null, 2));
-          if (!err) {
-            template.cardById_responseBody.set(JSON.stringify(data.data, null, 2));
-          }
+          template.cardById_responseBody.set(JSON.stringify(data.data, null, 2));
         })
         break
     }
