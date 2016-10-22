@@ -25,20 +25,7 @@
   <h2 id="endpoints">Endpoints</h2>
   <h3 id="all-cards">All Cards</h3>
   <p>Calling this endpoint will return a JSON of every card as of the latest patch. This can be filtered by a provided query string.</p>
-  <div class="form-group">
-    <div class="input-group">
-      <div class="input-group-addon">
-        GET
-      </div>
-      <input id="allCardsURL" type="text" class="form-control" value="{{baseURL}}cards?{{allCards_queries}}apikey={{userAPIKey}}">
-      <div class="input-group-addon">
-        <button class="btn-link clipboardJS-trigger" data-clipboard-target="#allCardsURL">
-          <span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
-          <span class="sr-only">(copy API endpoint)</span>
-        </button>
-      </div>
-    </div>
-  </div>
+  <h4>Parameters</h4>
   <div class="table-responsive">
     <table class="table">
       <caption>Query String</caption>
@@ -140,27 +127,42 @@
             <br>
             <code>base</code>: Only return cards belonging to the <i>Base</i> set
             <br>
-            <code>dos</code>: Only return cards beloning to the <i>Denizens of Shim'Zar</i> expansion</td>
+            <code>dos</code>: Only return cards belonging to the <i>Denizens of Shim'Zar</i> expansion</td>
         </tr>
       </tbody>
     </table>
   </div>
-  <h3 id="all-cards-by-patch">All Cards by Patch</h3>
-  <p>Calling this endpoint will return a JSON of all cards changed or added in the specified patch. This can be filtered by a provided query string much like <a href="#all-cards">All Cards</a>. Additionally, this endpoint has an additional option, <code>snapshot</code>. When set to <code>true</code>, the API will return all cards as of the specified patch.</p>
-  <div class="form-group">
-    <div class="input-group">
-      <div class="input-group-addon">
-        GET
-      </div>
-      <input id="cardsByPatchURL" type="text" class="form-control" value="{{baseURL}}patch/{{cardsByPatch_patch}}/cards?{{cardsByPatch_queries}}apikey={{userAPIKey}}">
-      <div class="input-group-addon">
-        <button class="btn-link clipboardJS-trigger" data-clipboard-target="#cardsByPatchURL">
-          <span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
-          <span class="sr-only">(copy API endpoint)</span>
-        </button>
+  <h4>Request URL</h4>
+  <form id="apiRequest_allCards" class="api-request">
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon">
+          GET
+        </div>
+        <input id="allCardsURL" type="text" name="apiURL" class="form-control" value="{{baseURL}}cards?{{allCards_queries}}apikey={{userAPIKey}}">
+        <div class="input-group-addon">
+          <button class="btn-link clipboardJS-trigger" data-clipboard-target="#allCardsURL">
+            <span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
+            <span class="sr-only">(copy API endpoint)</span>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
+    <div class="form-group">
+      <input type="submit" value="Request" class="btn btn-primary">
+    </div>
+  </form>
+  {{#if request_allCards}}
+    <h4>Response Status</h4>
+    <pre>{{allCards_responseStatus}}</pre>
+    <h4>Response Headers</h4>
+    <pre>{{allCards_responseHeader}}</pre>
+    <h4>Response Body</h4>
+    <pre>{{allCards_responseBody}}</pre>
+  {{/if}}
+  <h3 id="all-cards-by-patch">All Cards by Patch</h3>
+  <p>Calling this endpoint will return a JSON of all cards changed or added in the specified patch. This can be filtered by a provided query string much like <a href="#all-cards">All Cards</a>. Additionally, this endpoint has an additional option, <code>snapshot</code>. When set to <code>true</code>, the API will return all cards as of the specified patch.</p>
+  <h4>Parameters</h4>
   <div class="table-responsive">
     <table class="table">
       <caption>Path Parameters</caption>
@@ -294,7 +296,7 @@
             <br>
             <code>base</code>: Only return cards belonging to the <i>Base</i> set
             <br>
-            <code>dos</code>: Only return cards beloning to the <i>Denizens of Shim'Zar</i> expansion</td>
+            <code>dos</code>: Only return cards belonging to the <i>Denizens of Shim'Zar</i> expansion</td>
         </tr>
         <tr>
           <td>snapshot</td>
@@ -315,22 +317,36 @@
       </tbody>
     </table>
   </div>
-  <h3 id="card-by-id">Card by ID</h3>
-  <p>Calling this endpoint will return a JSON of the specified card across all patches it's been available. This is filterable to a specific patch.</p>
-  <div class="form-group">
-    <div class="input-group">
-      <div class="input-group-addon">
-        GET
-      </div>
-      <input id="cardByIdURL" type="text" class="form-control" value="{{baseURL}}card/{{cardById_id}}?{{cardById_queries}}apikey={{userAPIKey}}">
-      <div class="input-group-addon">
-        <button class="btn-link clipboardJS-trigger" data-clipboard-target="#cardByIdURL">
-          <span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
-          <span class="sr-only">(copy API endpoint)</span>
-        </button>
+  <h4>Request URL</h4>
+  <form id="apiRequest_cardsByPatch" class="api-request">
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon">
+          GET
+        </div>
+        <input id="cardsByPatchURL" type="text" class="form-control" name="apiURL" value="{{baseURL}}patch/{{cardsByPatch_patch}}/cards?{{cardsByPatch_queries}}apikey={{userAPIKey}}">
+        <div class="input-group-addon">
+          <button class="btn-link clipboardJS-trigger" data-clipboard-target="#cardsByPatchURL">
+            <span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
+            <span class="sr-only">(copy API endpoint)</span>
+          </button>
+        </div>
       </div>
     </div>
-  </div>
+    <div class="form-group">
+      <input type="submit" value="Request" class="btn btn-primary">
+    </div>
+  </form>
+  {{#if request_cardsByPatch}}
+    <h4>Response Status</h4>
+    <pre>{{cardsByPatch_responseStatus}}</pre>
+    <h4>Response Headers</h4>
+    <pre>{{cardsByPatch_responseHeader}}</pre>
+    <h4>Response Body</h4>
+    <pre>{{cardsByPatch_responseBody}}</pre>
+  {{/if}}
+  <h3 id="card-by-id">Card by ID</h3>
+  <p>Calling this endpoint will return a JSON of the specified card across all patches it's been available. This is filterable to a specific patch.</p>
   <div class="table-responsive">
     <table class="table">
       <caption>Path Parameters</caption>
@@ -393,6 +409,58 @@
       </tbody>
     </table>
   </div>
+  <h4>Request URL</h4>
+  <form id="apiRequest_cardById" class="api-request">
+    <div class="form-group">
+      <div class="input-group">
+        <div class="input-group-addon">
+          GET
+        </div>
+        <input id="cardByIdURL" type="text" class="form-control" name="apiURL" value="{{baseURL}}card/{{cardById_id}}?{{cardById_queries}}apikey={{userAPIKey}}">
+        <div class="input-group-addon">
+          <button class="btn-link clipboardJS-trigger" data-clipboard-target="#cardByIdURL">
+            <span class="glyphicon glyphicon-copy" aria-hidden="true"></span>
+            <span class="sr-only">(copy API endpoint)</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="submit" value="Request" class="btn btn-primary">
+    </div>
+  </form>
+  {{#if request_cardById}}
+    <h4>Response Status</h4>
+    <pre>{{cardById_responseStatus}}</pre>
+    <h4>Response Headers</h4>
+    <pre>{{cardById_responseHeader}}</pre>
+    <h4>Response Body</h4>
+    <pre>{{cardById_responseBody}}</pre>
+  {{/if}}
   <h2>Status Codes</h2>
-  <h2>Vocabulary</h2>
+  <div class="table-responsive">
+    <table class="table">
+      <caption>Status Codes</caption>
+      <thead>
+        <tr>
+          <th>Code</th>
+          <th>Definition</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>200</td>
+          <td>OK - Response received from server</td>
+        </tr>
+        <tr>
+          <td>401</td>
+          <td>Unauthorized - API key invalid or email unverified</td>
+        </tr>
+        <tr>
+          <td>50x</td>
+          <td>Server Error - Listlyst not responding as expected</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
