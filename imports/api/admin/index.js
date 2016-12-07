@@ -51,6 +51,13 @@ Meteor.methods({
       // Then update the historical data
       newCard.patch = patch;
 
+      if (newCard.created) {
+        delete newCard.created;
+      }
+      if (newCard.lastModifed) {
+        delete newCard.lastModifed;
+      }
+
       if (CardsHistorical.find({ 'id': card.id, 'patch': patch }, { limit: 1 }).count() !== 0 ) {
         var currentCard = CardsHistorical.find({ 'id': card.id, 'patch': patch })
         var dbId = currentCard._id;
@@ -94,7 +101,7 @@ Meteor.methods({
       var date = new Date();
       var updated = (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
       server.updated = updated;
-  
+
       ServerInfo.update({_id: server._id}, server);
     }
 
