@@ -199,5 +199,7 @@ Template.documentation.events({
         })
         break
     }
+  },
+  'click .clipboardJS-trigger': function(e) {
   }
 })

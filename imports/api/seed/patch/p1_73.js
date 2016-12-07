@@ -16,7 +16,7 @@ p1_73 = [{
 	"rarity": "Epic",
 	"name": "Night Watcher",
 	"description": "Forcefield\nWhenever ANY player summons a minion with Rush, exhaust it",
-	"manaCost": 6,
+	"manaCost": 4,
 	"type": "Unit",
 	"race": "Minion",
 	"attack": 2,

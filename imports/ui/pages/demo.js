@@ -8,7 +8,7 @@ Template.registerHelper('demo_arrayifyPatchwork',function(obj){
 });
 
 Template.demo.onCreated(function() {
-  var patches = [0.62, 1.63, 1.64, 1.65, 1.66, 1.67, 1.69, 1.71, 1.73, 1.74]
+  var patches = [0.62, 1.63, 1.64, 1.65, 1.66, 1.67, 1.69, 1.71, 1.73, 1.74, 1.75, 1.76]
 
   Meteor.call('demoAPIAccess', patches, function(error, data) {
     if (error) {
