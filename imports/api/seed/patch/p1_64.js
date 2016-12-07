@@ -1,4 +1,4 @@
-p1_64 = [{
+[{
 	"id": 101,
 	"faction": "Songhai Empire",
 	"rarity": "Basic",

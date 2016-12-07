@@ -1,4 +1,4 @@
-p1_66 = [{
+[{
 	"id": 201,
 	"faction": "Vetruvian Imperium",
 	"rarity": "Basic",

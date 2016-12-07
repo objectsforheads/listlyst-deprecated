@@ -1,4 +1,4 @@
-p1_74 = [{
+[{
 	"id": 527,
 	"faction": "Vanar Kindred",
 	"rarity": "Basic",

@@ -29,3 +29,5 @@ import '../../api/filter';
 
 // Demo functionality
 import '../../api/demo';
+
+import '../../api/admin';

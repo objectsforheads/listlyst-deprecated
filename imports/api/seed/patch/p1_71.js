@@ -1,4 +1,4 @@
-p1_71 = [{
+[{
 		"id": 20051,
 		"faction": "Abyssian Host",
 		"rarity": "Basic",

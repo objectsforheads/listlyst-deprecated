@@ -1,4 +1,4 @@
-p0_62 = [{
+[{
 	"id": 1,
 	"faction": "Lyonar Kingdoms",
 	"rarity": "Basic",

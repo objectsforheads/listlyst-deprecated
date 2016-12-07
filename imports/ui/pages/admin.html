@@ -1,0 +1,61 @@
+<template name="admin">
+  <h1>Admin Panel</h1>
+  <h2>Patch Changes</h2>
+  <h3>Add/Change Patch</h3>
+  <form class="changePatch">
+    <div class="form-group">
+      <label for="patchVersion">Version</label>
+      <input type="text" name="patchVersion" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="patchJSON">JSON</label>
+      <textarea name="patchJSON" class="form-control" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="changePatchHandshake">Handshake</label>
+      <input type="password" name="changePatchHandshake" class="form-control" required>
+    </div>
+    <input type="submit" value="Add/Update" class="btn btn-primary btn-block">
+  </form>
+  <h3>Remove Patch</h3>
+  <form class="removePatch">
+    <div class="form-group">
+      <label for="removePatch">Version</label>
+      <input type="text" name="removePatch" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="removePatchHandshake">Handshake</label>
+      <input type="password" name="removePatchHandshake" class="form-control" required>
+    </div>
+    <input type="submit" value="Remove" class="btn btn-primary btn-block">
+  </form>
+  <h2>Server Information</h2>
+  <p>Server records indicate that:</p>
+  <ul>
+    {{#each serverMeta}}
+    <li>{{serverMetaKey}}: {{serverMetaValue}}</li>
+    {{/each}}
+  </ul>
+  <p>This information should be automatically updated. Force a manual update using this function.</p>
+  <form class="updateServerInfo">
+    <div class="form-group">
+      <label for="serverUpdateHandshake">Handshake</label>
+      <input type="password" name="serverUpdateHandshake" class="form-control" required>
+    </div>
+    <input type="submit" value="Update" class="btn btn-primary btn-block">
+  </form>
+  <h2>Engage Doomsday</h2>
+  <p>Reset the server</p>
+  <form class="engageDoomsday">
+    <div class="form-group">
+      <label for="doomsdayHandshake">Handshake</label>
+      <input type="password" name="doomsdayHandshake" class="form-control" required>
+    </div>
+    <input type="submit" value="Begin Nuclear Winter" class="btn btn-danger btn-block">
+  </form>
+  {{#if changelog}}
+  <h2>Changelog</h2>
+  <pre>{{#each changelog}}{{this}}
+{{/each}}</pre>
+  {{/if}}
+</template>

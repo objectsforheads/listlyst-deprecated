@@ -1,4 +1,4 @@
-p1_75 = [{
+[{
 	"id": 11083,
 	"faction": "Neutral",
 	"rarity": "Rare",

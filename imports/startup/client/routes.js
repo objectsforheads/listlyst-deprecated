@@ -21,3 +21,10 @@ FlowRouter.route( '/demo', {
     BlazeLayout.render( 'mainLayout', { main: 'demo' } )
   }
 })
+
+FlowRouter.route('/secret-passage', {
+  name: 'admin',
+  action: function() {
+    BlazeLayout.render( 'mainLayout', { main: 'admin' } )
+  }
+})
