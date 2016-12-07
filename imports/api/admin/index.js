@@ -90,6 +90,11 @@ Meteor.methods({
         log.push("Latest server patch now at " + patch)
       }
       log.push('Server now has patch information for patches: ' + server.patches);
+
+      var date = new Date();
+      var updated = (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
+      server.updated = updated;
+  
       ServerInfo.update({_id: server._id}, server);
     }
 
@@ -133,6 +138,11 @@ Meteor.methods({
     // Remove patch from server meta
     server.patches.splice(server.patches.indexOf(patch), 1);
     log.push('Removed patch ' + patch);
+
+    // update updated time
+    var date = new Date();
+    var updated = (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
+    server.updated = updated;
 
     ServerInfo.update({_id: server._id}, server)
     log.push('Server now has patch information for patches: ' + server.patches);
@@ -193,10 +203,14 @@ Meteor.methods({
     ServerInfo.remove({});
     log.push('Reset server meta data');
 
+    var date = new Date();
+    var updated = (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear()
+
     ServerInfo.insert({
       patches: [],
       earliest: 0,
-      latest: 0
+      latest: 0,
+      updated: updated
     })
 
     return log;
