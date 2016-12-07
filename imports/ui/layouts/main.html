@@ -17,13 +17,14 @@
       <div class="col-sm-12 col-md-12 text-right site-sidebar">
         <h1 class="site-title"><a href="/">listlyst</a></h1>
         <nav>
+          {{#if Template.subscriptionsReady}}
           <p class="hug">
             <a href="/documentation">documentation</a> | <a href="/demo">demo</a>
 
             <br>
-            from: <strong>0.62</strong> to <strong>1.76</strong>
+            from: <strong>{{earliestPatch}}</strong> to <strong>{{latestPatch}}</strong>
             <br>
-            updated: 11/17/16
+            updated: {{lastUpdated}}
           </p>
           {{#if currentUser}}
           <p>Howdy, {{currentUser.username}}</p>
@@ -33,10 +34,13 @@
             <a href="/">Sign Up/Log In</a>
           </p>
           {{/if}}
+          {{/if}}
         </nav>
       </div>
       <div class="col-sm-12 col-md-12 site-content">
+        {{#if Template.subscriptionsReady}}
         {{> mainContent}}
+        {{/if}}
       </div>
     </div>
     <footer class="site-footer">

@@ -68,13 +68,9 @@
           <td>
             <select class="form-control allCards_query" name="allCards_faction">
               <option value="" selected>null</option>
-              <option value="lyonar">lyonar</option>
-              <option value="songhai">songhai</option>
-              <option value="abyssian">abyssian</option>
-              <option value="vetruvian">vetruvian</option>
-              <option value="magmar">magmar</option>
-              <option value="vanar">vanar</option>
-              <option value="neutral">neutral</option>
+              {{#each factions}}
+              <option value="{{this}}">{{this}}</option>
+              {{/each}}
             </select>
           </td>
           <td>
@@ -88,11 +84,9 @@
           <td>
             <select class="form-control allCards_query" name="allCards_rarity">
               <option value="" selected>null</option>
-              <option value="basic">basic</option>
-              <option value="common">common</option>
-              <option value="rare">rare</option>
-              <option value="epic">epic</option>
-              <option value="legendary">legendary</option>
+              {{#each rarities}}
+              <option value="{{this}}">{{this}}</option>
+              {{/each}}
             </select>
           </td>
           <td>
@@ -122,15 +116,9 @@
           <td>
             <select class="form-control allCards_query" name="allCards_race">
               <option value="" selected>null</option>
-              <option value="general">general</option>
-              <option value="minion">minion</option>
-              <option value="warmaster">warmaster</option>
-              <option value="golem">golem</option>
-              <option value="arcanyst">arcanyst</option>
-              <option value="mech">mech</option>
-              <option value="battlepet">battlepet</option>
-              <option value="spell">spell</option>
-              <option value="artifact">artifact</option>
+              {{#each races}}
+              <option value="{{this}}">{{this}}</option>
+              {{/each}}
             </select>
           </td>
           <td>
@@ -144,8 +132,9 @@
           <td>
             <select class="form-control allCards_query" name="allCards_set">
               <option value="" selected>null</option>
-              <option value="base">base</option>
-              <option value="dos">dos</option>
+              {{#each sets}}
+              <option value="{{this}}">{{this}}</option>
+              {{/each}}
             </select>
           </td>
           <td>
@@ -205,18 +194,10 @@
           </td>
           <td>
             <select class="form-control cardsByPatch_patch">
-              <option value="0.62">0.62</option>
-              <option value="1.63">1.63</option>
-              <option value="1.64">1.64</option>
-              <option value="1.65">1.65</option>
-              <option value="1.66">1.66</option>
-              <option value="1.67">1.67</option>
-              <option value="1.69">1.69</option>
-              <option value="1.71">1.71</option>
-              <option value="1.73">1.73</option>
-              <option value="1.74">1.74</option>
-              <option value="1.75">1.75</option>
-              <option value="1.76">1.76</option>
+              <option value="" selected>null</option>
+              {{#each patches}}
+              <option value="{{this}}">{{this}}</option>
+              {{/each}}
             </select>
           </td>
         </tr>
@@ -239,13 +220,9 @@
           <td>
             <select class="form-control cardsByPatch_query" name="cardsByPatch_faction">
               <option value="" selected>null</option>
-              <option value="lyonar">lyonar</option>
-              <option value="songhai">songhai</option>
-              <option value="abyssian">abyssian</option>
-              <option value="vetruvian">vetruvian</option>
-              <option value="magmar">magmar</option>
-              <option value="vanar">vanar</option>
-              <option value="neutral">neutral</option>
+              {{#each factions}}
+              <option value="{{this}}">{{this}}</option>
+              {{/each}}
             </select>
           </td>
           <td>
@@ -259,11 +236,9 @@
           <td>
             <select class="form-control cardsByPatch_query" name="cardsByPatch_rarity">
               <option value="" selected>null</option>
-              <option value="basic">basic</option>
-              <option value="common">common</option>
-              <option value="rare">rare</option>
-              <option value="epic">epic</option>
-              <option value="legendary">legendary</option>
+              {{#each rarities}}
+              <option value="{{this}}">{{this}}</option>
+              {{/each}}
             </select>
           </td>
           <td>
@@ -293,15 +268,9 @@
           <td>
             <select class="form-control cardsByPatch_query" name="cardsByPatch_race">
               <option value="" selected>null</option>
-              <option value="general">general</option>
-              <option value="minion">minion</option>
-              <option value="warmaster">warmaster</option>
-              <option value="golem">golem</option>
-              <option value="arcanyst">arcanyst</option>
-              <option value="mech">mech</option>
-              <option value="battlepet">battlepet</option>
-              <option value="spell">spell</option>
-              <option value="artifact">artifact</option>
+              {{#each races}}
+              <option value="{{this}}">{{this}}</option>
+              {{/each}}
             </select>
           </td>
           <td>
@@ -315,8 +284,9 @@
           <td>
             <select class="form-control cardsByPatch_query" name="cardsByPatch_set">
               <option value="" selected>null</option>
-              <option value="base">base</option>
-              <option value="dos">dos</option>
+              {{#each sets}}
+              <option value="{{this}}">{{this}}</option>
+              {{/each}}
             </select>
           </td>
           <td>
@@ -414,18 +384,9 @@
           <td>
             <select name="cardById_patch" class="form-control cardById_query">
               <option value="">null</option>
-              <option value="0.62">0.62</option>
-              <option value="1.63">1.63</option>
-              <option value="1.64">1.64</option>
-              <option value="1.65">1.65</option>
-              <option value="1.66">1.66</option>
-              <option value="1.67">1.67</option>
-              <option value="1.69">1.69</option>
-              <option value="1.71">1.71</option>
-              <option value="1.73">1.73</option>
-              <option value="1.74">1.74</option>
-              <option value="1.75">1.75</option>
-              <option value="1.76">1.76</option>
+              {{#each patches}}
+              <option value="{{this}}">{{this}}</option>
+              {{/each}}
             </select>
           </td>
           <td>

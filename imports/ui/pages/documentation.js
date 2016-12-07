@@ -92,6 +92,21 @@ Template.documentation.helpers({
   },
   'cardById_responseBody': function() {
     return Template.instance().cardById_responseBody.get();
+  },
+  'factions': function() {
+    return ['lyonar', 'songhai', 'abyssian', 'vetruvian', 'magmar', 'vanar', 'neutral'];
+  },
+  'rarities': function() {
+    return ['basic', 'common', 'rare', 'epic', 'legendary'];
+  },
+  'races': function() {
+    return ['general', 'minion', 'warmaster', 'golem', 'arcanyst', 'mech', 'battlepet', 'spell', 'artifact'];
+  },
+  'sets': function() {
+    return ['base', 'dos'];
+  },
+  'patches': function() {
+    return ServerInfo.findOne().patches;
   }
 })
 
